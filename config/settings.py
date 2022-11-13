@@ -14,6 +14,8 @@ from pathlib import Path
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import movies.apps
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -38,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'movies',
+    'movies.apps.MoviesConfig',
 ]
 
 MIDDLEWARE = [
