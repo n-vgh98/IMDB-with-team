@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-
+{% block title %}Home{% endblock %}
 {% block content %}
 <!-- page header -->
     <header class="header">
         <div class="overlay"></div>
         <div class="header-content">
-            <h1 class="header-title">What Happens Tomorrow?</h1>
+            <h1 class="header-title" style="background-image: url(../imgs/header.jpg);">What Happens Tomorrow?</h1>
             <p class="header-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt.</p>
 
@@ -36,7 +36,7 @@
         <div class="row mb-4">
             {% for movie in movies %}
             <div class="col-md-4">
-                <a href="javascript:void(0)" class="overlay-img">
+                <a href="{% url 'movie_detail' movie.id %}" class="overlay-img">
                     <img src="{{ movie.avatar.url }}" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">
                     <div class="overlay"></div>
                     <div class="des">

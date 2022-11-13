@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Movies Detail{% endblock %}
+{% block content %}
+<!-- page header -->
+    <header class="header" style="background-image: url('{{ movie.avatar.url }}'); height: 50%;">
+        <div class="overlay"></div>
+        <div class="header-content">
+            <h1 class="header-title" >hi</h1>
+{#            <p class="header-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod#}
+{#            tempor incididunt.</p>#}
+
+            <button class="btn btn-theme-color modal-toggle"><i class="ti-control-play text-danger"></i> Watch Video</button>
+
+        </div>
+    </header><!-- end of page header -->
+
+    <!-- modal -->
+    <div class="modalBox">
+        <div class="modalBox-body">
+            <iframe width="100%" height="450px" class="border-0"
+            src="https://www.youtube.com/embed/tgbNyZ7vqY?controls=0">
+            </iframe>
+        </div>
+    </div><!-- end of modal -->
+
+    <!-- page container -->
+    <div class="container page-container">
+        <div class="col-md-10 col-lg-8 m-auto">
+            <h6 class="title mb-4">{{ movie.title }}</h6>
+            <p class="mb-5">
+                {{ movie.description }}
+            </p>
+        </div>
+
+
+    </div> <!-- end of page container -->
+{% endblock %}

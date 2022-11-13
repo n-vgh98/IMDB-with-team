@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with Dorang landing page.">
     <meta name="author" content="Devcrud">
-    <title>Dorang | Free Bootstrap 4.3.x template</title>
+    <title>{% block title %}IMDb{% endblock %}</title>
     <!-- font icons -->
     <link rel="stylesheet" href="{% static 'movies/vendors/themify-icons/css/themify-icons.css'%}">
 
@@ -53,16 +53,16 @@
         <div class="overlay"></div>
         <!-- container -->
         <div class="container">
-            <div class="col-md-10 col-lg-8 m-auto">
-                <h6 class="title mb-2">Contact Us</h6>
-                <p class="mb-5">Feel Free To Drop Us A Line.</p>
-                <form action="" class="form-group">
-                    <input type="text" size="50" class="form-control" placeholder="Your Name" required>
-                    <input type="email" class="form-control" placeholder="Enter Email"requried>
-                    <textarea name="comment" id="comment" rows="6"   class="form-control" placeholder="Write Something"></textarea>
-                    <input type="submit" value="Send Message" class="form-control">
-                </form>
-            </div>
+{#            <div class="col-md-10 col-lg-8 m-auto">#}
+{#                <h6 class="title mb-2">Contact Us</h6>#}
+{#                <p class="mb-5">Feel Free To Drop Us A Line.</p>#}
+{#                <form action="" class="form-group">#}
+{#                    <input type="text" size="50" class="form-control" placeholder="Your Name" required>#}
+{#                    <input type="email" class="form-control" placeholder="Enter Email"requried>#}
+{#                    <textarea name="comment" id="comment" rows="6"   class="form-control" placeholder="Write Something"></textarea>#}
+{#                    <input type="submit" value="Send Message" class="form-control">#}
+{#                </form>#}
+{#            </div>#}
 
             <!-- footer -->
             <footer class="footer">
