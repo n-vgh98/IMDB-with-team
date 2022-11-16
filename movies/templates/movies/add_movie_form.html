@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Add Movie{% endblock %}
+{% block content %}
+<!-- page header -->
+    <div class="container page-container">
+        <div class="col-md-10 col-lg-8 m-auto p-5">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class="btn btn-success">Save</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

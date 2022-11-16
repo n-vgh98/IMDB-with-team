@@ -38,7 +38,11 @@
             {% for movie in movies %}
             <div class="col-md-4">
                 <a href="{% url 'movie_detail' movie.id %}" class="overlay-img">
+                    {% if movie.avatar %}
                     <img src="{{ movie.avatar.url }}" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">
+                    {% else %}
+                    <img src="#" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">
+                    {% endif %}
                     <div class="overlay"></div>
                     <div class="des">
                         <h1 class="title">{{ movie.title }}</h1>
