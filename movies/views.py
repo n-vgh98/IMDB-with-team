@@ -54,3 +54,11 @@ def edit_movie(request, pk):
                 'movie': movie
             }
             return render(request, 'movies/edit_movie_form.html', context=context)
+
+
+def delete_movie(request, pk):
+    movie = get_object_or_404(Movie, pk=pk)
+    movie.is_valid = False
+    movie.save()
+
+    return redirect('movies_list')

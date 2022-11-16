@@ -9,6 +9,10 @@
                 {{ form.as_p }}
                 <button type="submit" class="btn btn-success">Update</button>
             </form>
+            <form action="{% url "delete_movie" movie.id %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
         </div>
     </div>
 {% endblock %}
