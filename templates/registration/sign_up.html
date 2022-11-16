@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+    <div class="ontainer page-container">
+    <div class="row">
+        <div class="col-md-12" style="padding-top:13%;">
+             <form action="" method="POST" class="form-group">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Sing up</button>
+        </form>
+        </div>
+    </div>
+
+
+    </div>
+{% endblock %}
