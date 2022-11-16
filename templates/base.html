@@ -20,19 +20,7 @@
 <!-- page navbar -->
 <nav class="page-navbar" data-spy="affix" data-offset-top="10">
     <ul class="nav-navbar container">
-            <li class="nav-item dropdown" style="top:75%; position: relative;">
-                <a class="nav-link dropdown-toggle"  href="#" role="button" data-bs-toggle="dropdown">Menu</a>
-
-                <ul class="my-menu">
-                    <li><a class="dropdown-item" href="#">Movies</a></li>
-                    <li><a class="dropdown-item" href="#">TV Shows</a></li>
-                    <li><a class="dropdown-item" href="#">Award & Events</a></li>
-                    <li><a class="dropdown-item" href="#">Celebs</a></li>
-                    <li><a class="dropdown-item" href="#">Community</a></li>
-
-                </ul>
-            </li>
-
+        <li class="nav-item"><a href="#" class="nav-link">Sign Up</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Sign In</a></li>
         <li class="nav-item"><a href="#" class="nav-link"><img style="width: 70%"
                                                                src="{% static "movies/imgs/logo.png" %}"></a></li>
@@ -52,18 +40,8 @@
                 </form>
             </div>
         </li>
-        </ul>
+    </ul>
 </nav><!-- end of page navbar -->
-
-<div class="theme-selector">
-    <a href="javascript:void(0)" class="spinner">
-        <i class="ti-paint-bucket"></i>
-    </a>
-    <div class="body">
-        <a href="javascript:void(0)" class="light"></a>
-        <a href="javascript:void(0)" class="dark"></a>
-    </div>
-</div>
 
 {% block content %}
 
@@ -88,12 +66,15 @@
         <footer class="footer">
             <p class="infos">&copy;
                 <script>document.write(new Date().getFullYear())</script>
-                , Made with <i class="ti-heart text-danger"></i> by <a href="http://www.devcrud.com">DevCRUD</a></p>
+                , Made with <i class="ti-heart text-danger"></i> by <a href="http://www.devcrud.com"><b>NYRVa</b></a></p>
             <span>|</span>
             <div class="links">
-                <a href="#">About</a>
-                <a href="#">Explore</a>
-                <a href="#">Journal</a>
+
+                <link rel="stylesheet"
+                      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <a href="#"><a href="https://facebook.com/imdb" class="fa fa-facebook font-icon"></a></a>
+                <a href="#"><a href="https://instagram.com/imdb" class="fa fa-instagram font-icon"></a></a>
+                <a href="#"><a href="https://youtube.com/imdb/" class="fa fa-youtube font-icon"></a></a>
             </div>
         </footer><!-- end of footer -->
 
