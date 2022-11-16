@@ -11238,10 +11238,11 @@ a:hover {
       -ms-flex-align: center;
           align-items: center;
   position: absolute;
-
+  display: none;
 }
 
 .page-navbar .nav-navbar .nav-item {
+  display: none;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
@@ -11253,7 +11254,7 @@ a:hover {
 }
 
 page-navbar .nav-navbar .nav-item ul {
-
+  display: none;
   margin-left: 200px;
   margin-top: -35px;
 }
@@ -11266,8 +11267,8 @@ my-menu li{
   list-style: none;
 }
 
-my-menu li a{
-  display: none;
+my-menu li a:hover{
+  display: block;
 }
 
 .page-navbar .nav-navbar .nav-link {
