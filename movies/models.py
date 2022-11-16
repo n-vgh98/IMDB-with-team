@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Genre(models.Model):
     title = models.CharField(max_length=50)
     is_valid = models.BooleanField(default=True)
@@ -9,6 +10,7 @@ class Genre(models.Model):
     def __str__(self):
         return self.title
 
+
 class Role(models.Model):
     title = models.CharField(max_length=50)
     is_valid = models.BooleanField(default=True)
@@ -17,6 +19,7 @@ class Role(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class Crew(models.Model):
     MALE = 1
@@ -40,6 +43,7 @@ class Crew(models.Model):
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
 
+
 class Movie(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -53,6 +57,7 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class MovieCrew(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
