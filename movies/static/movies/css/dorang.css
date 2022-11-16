@@ -11252,24 +11252,6 @@ a:hover {
           flex-basis: 0;
 }
 
-page-navbar .nav-navbar .nav-item ul {
-
-  margin-left: 200px;
-  margin-top: -35px;
-}
-my-menu {
-  display: none;
-  list-style: none;
-}
-
-my-menu li{
-  list-style: none;
-}
-
-my-menu li a{
-  display: none;
-}
-
 .page-navbar .nav-navbar .nav-link {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
