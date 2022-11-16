@@ -12,7 +12,6 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700");
-
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -11234,12 +11233,11 @@ a:hover {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  position: absolute;
-
 }
 
 .page-navbar .nav-navbar .nav-item {
@@ -11501,6 +11499,8 @@ a:hover {
   height: 100%;
   min-height: 600px;
   text-align: center;
+  color: #fff;
+  background-image: url(../imgs/header.jpg);
   background-size: cover;
   background-position: center;
   -webkit-transition: .2s;
@@ -11792,14 +11792,14 @@ body.dark-theme {
     text-decoration: none;
 }
 
-/* Add a hover effect if you want */
+/ Add a hover effect if you want /
 .fa:hover {
     opacity: 0.7;
 }
 
-/* Set a specific color for each brand */
+/ Set a specific color for each brand /
 
-/* Facebook */
+/ Facebook /
 .fa-facebook {
     background: #212529;
     color: white;
