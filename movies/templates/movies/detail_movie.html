@@ -32,6 +32,11 @@
             </p>
         </div>
 
+        {% if user.is_authenticated %}
+        <a href="{% url 'edit_movie' movie.id %}"><button type="button" class="btn btn-primary">If do you think this movie need to edit<br>So,Click Here</button></a>
+        {% else %}
+        <a href="{% url 'login' %}"><button type="button" class="btn btn-primary">If do you think this movie need to edit<br>So,Click Here</button></a>
+        {% endif %}
 
     </div> <!-- end of page container -->
 {% endblock %}
