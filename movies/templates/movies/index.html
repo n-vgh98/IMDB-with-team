@@ -55,43 +55,10 @@
 
 
         </div><!-- end of row -->
-
-        <a href="#">Load More <i class="ti-angle-double-right angle"></i></a>
-
-
-{#        <div class="col-md-10 col-lg-8 m-auto">#}
-{#            <h6 class="title mb-4 mt-5 pt-5">IMDb originals</h6>#}
-{#            <p class="mb-5">celebrity interviews, trending entertainments stories and expert analysis</p>#}
-{#        </div>#}
-
-        <!-- row -->
-{#        <div class="row mb-5">#}
-{#            <div class="col-md-6">#}
-{#                <a href="javascript:void(0)" class="card">#}
-{#                    <img src="assets/imgs/blog-1.jpg" class="card-img" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">#}
-{#                    <div class="card-body">#}
-{#                        <h6 class="card-subtitle">30 June, 2018</h6>#}
-{#                        <h3 class="card-title">Eiusmod#}
-{#                        tempor</h3>#}
-{#                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod#}
-{#                        tempor incididunt ut labore et dolore magna aliqua.</p>#}
-{#                    </div>#}
-{#                </a>#}
-{#            </div>#}
-{#            <div class="col-md-6">#}
-{#                <a href="javascript:void(0)" class="card">#}
-{#                    <img src="assets/imgs/blog-2.jpg" class="card-img" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">#}
-{#                    <div class="card-body">#}
-{#                        <h6 class="card-subtitle">29 June, 2018</h6>#}
-{#                        <h3 class="card-title">Ut minim veniam</h3>#}
-{#                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod#}
-{#                        tempor incididunt ut labore et dolore magna aliqua.</p>#}
-{#                    </div>#}
-{#                </a>#}
-{#            </div>#}
-{#        </div><!-- end of row -->#}
-
-        <a href="#">All Posts <i class="ti-angle-double-right angle"></i></a>
-
+        {% if user.is_authenticated %}
+        <a href="{% url 'add_movie' %}"><button type="button" class="btn btn-primary">If do you like to add your favorite movie<br>So,Click Here</button></a>
+        {% else %}
+        <a href="{% url 'login' %}"><button type="button" class="btn btn-primary">If do you like to add your favorite movie<br>So,Click Here</button></a>
+        {% endif %}
     </div> <!-- end of page container -->
 {% endblock %}
