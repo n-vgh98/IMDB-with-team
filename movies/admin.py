@@ -40,7 +40,14 @@ class AdminRole(admin.ModelAdmin):
     list_filter = ('is_valid',)
 
 
+class AdminMovieComment(admin.ModelAdmin):
+    list_display = ('id', 'movie', 'status')
+    search_fields = ('movie',)
+    list_filter = ('movie',)
+
+
 admin.site.register(Movie, AdminMovie)
 admin.site.register(Crew, AdminCrew)
 admin.site.register(Role, AdminRole)
 admin.site.register(Genre, AdminGenre)
+admin.site.register(MovieComment, AdminMovieComment)

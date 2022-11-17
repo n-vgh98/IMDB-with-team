@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Genre(models.Model):
@@ -68,3 +69,32 @@ class MovieCrew(models.Model):
 
     class Meta:
         unique_together = ('movie', 'crew', 'role')
+
+
+class AbstaractComment(models.Model):
+    CREATED = 10
+    REJECTED = 20
+    APPROVED = 30
+    DELETED = 40
+    STATUS_CHOISES = (
+        (CREATED, "CREATED"),
+        (REJECTED, "REJECTED"),
+        (APPROVED, "APPROVED"),
+        (DELETED, "DELETED")
+    )
+
+    parent = models.ForeignKey("self", on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="comment")
+    comment_body = models.TextField()
+    status = models.PositiveSmallIntegerField(choices=STATUS_CHOISES, default=CREATED)
+    validated_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True,
+                                     related_name="validated_by")
+    created_time = models.DateTimeField(auto_now_add=True)
+    modified_time = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+class MovieComment(AbstaractComment):
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
