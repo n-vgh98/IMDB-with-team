@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-
-from .forms import MovieForm
+from django.contrib.auth.models import User
+from .forms import MovieForm, CommentForm
 from .models import *
 
 
@@ -11,8 +11,13 @@ def movies_list(request):
 
 
 def movie_detail(request, pk):
+    if request.method == 'POST':
+        pass
+
+    form = CommentForm()
+
     movie = Movie.objects.get(pk=pk)
-    return render(request, 'movies/detail_movie.html', {'movie': movie})
+    return render(request, 'movies/detail_movie.html', {'movie': movie, 'form': form})
 
 
 def add_movie(request):

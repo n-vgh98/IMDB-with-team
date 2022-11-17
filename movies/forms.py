@@ -7,7 +7,8 @@ class MovieForm(forms.ModelForm):
         model = Movie
         fields = ['title', 'description', 'release_date', 'avatar']
 
-# class CommentForm(forms.ModelForm):
-#     class Meta:
-#         model = MovieComment
-#         fields = ['','','',]
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = MovieComment
+        fields = ['comment_body']

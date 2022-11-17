@@ -8,5 +8,4 @@ urlpatterns = [
     path('edit_movie/<int:pk>/', edit_movie, name="edit_movie"),
     path('delete_movie/<int:pk>/', delete_movie, name="delete_movie"),
 
-
 ]
