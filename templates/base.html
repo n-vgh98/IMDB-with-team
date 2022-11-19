@@ -22,7 +22,7 @@
     <ul class="nav-navbar container">
             <li class="nav-item">
                 {% if user.is_authenticated %}
-                    <a href="#" class="nav-link" role="button" data-bs-toggle="dropdown"><i class="ti-user"></i>{{ user.username }}</a><a href="{% url 'logout' %}" class="nav-link" role="button" data-bs-toggle="dropdown">Logout</a>
+                    <a href="#" class="nav-link" role="button" data-bs-toggle="dropdown"><i class="ti-user"></i>{{ user.first_name }}</a> <a href="{% url 'logout' %}" class="nav-link" role="button" data-bs-toggle="dropdown">Logout</a>
                 {% else %}
                 <a class="nav-link"  href="{% url 'login' %}" role="button" data-bs-toggle="dropdown">Sign In</a>
                 {% endif %}
