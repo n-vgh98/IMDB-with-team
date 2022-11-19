@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.conf import settings
 
@@ -98,3 +99,20 @@ class AbstaractComment(models.Model):
 
 class MovieComment(AbstaractComment):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+
+
+class AbstractRate(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='rate_user')
+    rate = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    created_time = models.DateTimeField(auto_now_add=True)
+    modified_time = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+class MovieRate(AbstractRate):
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='movie_rate')
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=('user', 'movie'), name='unique_user_movie_rate')]
