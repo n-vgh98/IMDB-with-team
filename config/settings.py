@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'movies.apps.MoviesConfig',
     'accounts',
+    'users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'movies_list'
 LOGOUT_REDIRECT_URL = 'movies_list'
+
+AUTH_USER_MODEL = 'users.User'
