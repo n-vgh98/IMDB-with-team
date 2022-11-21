@@ -12,15 +12,25 @@ def movies_list(request):
 
 
 def movie_detail(request, pk):
-    form = CommentForm()
+    if request.method == "GET":
+        form = CommentForm()
 
-    movie = Movie.objects.get(pk=pk)
-    return render(request, 'movies/detail_movie.html', {'movie': movie, 'form': form})
+        movie = Movie.objects.get(pk=pk)
+        return render(request, 'movies/detail_movie.html', {'movie': movie, 'form': form})
+
+    elif request.method == "POST":
+        if User.is_authenticated:
+            form = CommentForm(request.POST)
+            movie_comment = MovieComment.objects.create(comment_body=form, movie_id=pk, user_id=User.pk)
+            movie_comment.save()
+        else:
+            pass
 
 
-@login_required(login_url='/users/signup/')
-def movie_comment_save(request, pk, form):
-    pass
+# @login_required(login_url='/users/signup/')
+# def movie_comment_save(request, pk):
+#     form = MovieComment(request.POST)
+#     MovieComment.objects.create(comment_body=form, movie_id=pk)
 
 
 def add_movie(request):

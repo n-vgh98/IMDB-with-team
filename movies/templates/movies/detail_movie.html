@@ -40,7 +40,7 @@
                 <div class="col-md-10 col-lg-8 m-auto">
                     <h6 class="title mb-2">Comment below</h6>
                     <p class="mb-5">Feel Free To Say Your Opinion <b>:)</b></p>
-                    <form action="{% url 'movie_detail' movie.id %}" method="post" class="form-group">
+                    <form action="{% url 'movie_detail' movie.id%}" method="post" class="form-group">
                         {% csrf_token %}
                         {% for field in form %}
                             {{ field }}
