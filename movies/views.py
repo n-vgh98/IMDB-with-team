@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
@@ -30,6 +31,14 @@ def movie_detail(request, pk):
         'form': form,
         'movie_comments': movie_comments,
     })
+
+
+
+
+# @login_required(login_url='/users/signup/')
+# def movie_comment_save(request, pk):
+#     form = MovieComment(request.POST)
+#     MovieComment.objects.create(comment_body=form, movie_id=pk)
 
 
 
