@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
@@ -11,13 +12,15 @@ def movies_list(request):
 
 
 def movie_detail(request, pk):
-    if request.method == 'POST':
-        pass
-
     form = CommentForm()
 
     movie = Movie.objects.get(pk=pk)
     return render(request, 'movies/detail_movie.html', {'movie': movie, 'form': form})
+
+
+@login_required(login_url='/users/signup/')
+def movie_comment_save(request, pk, form):
+    pass
 
 
 def add_movie(request):
