@@ -98,7 +98,7 @@ class AbstaractComment(models.Model):
 
 
 class MovieComment(AbstaractComment):
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name="movie_comments")
 
 
 class AbstractRate(models.Model):

@@ -37,6 +37,62 @@
             <div class="overlay"></div>
             <!-- container -->
             <div class="container">
+
+
+{#           comments        #}
+                {% for comment in movie_comments %}
+                <div class="row d-flex justify-content-center">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp" alt="avatar" width="65"
+                        height="65" />
+                  <div class="col-md-11 col-lg-9 col-xl-7">
+                    <div class="d-flex flex-start mb-4">
+                      <div class="card w-100" >
+                        <div class="card-body p-4">
+                          <div class="text-dark">
+                            <h5 class="text-left">{{ comment.user.full_name }}</h5>
+{#                            <p class="small">3 hours ago</p>#}
+                            <p>
+                              {{ comment.comment_body | linebreaks }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            {% endfor %}
+
+
+{#        <div class="d-flex flex-start">#}
+{#          <img class="rounded-circle shadow-1-strong me-3"#}
+{#            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp" alt="avatar" width="65"#}
+{#            height="65" />#}
+{#          <div class="card w-100">#}
+{#            <div class="card-body p-4">#}
+{#              <div class="">#}
+{#                <h5>Mindy Campbell</h5>#}
+{#                <p class="small">5 hours ago</p>#}
+{#                <p>#}
+{#                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus#}
+{#                  cumque doloribus dolorum dolor repellat nemo animi at iure autem fuga#}
+{#                  cupiditate architecto ut quam provident neque, inventore nisi eos quas?#}
+{#                </p>#}
+{##}
+{#                <div class="d-flex justify-content-between align-items-center">#}
+{#                  <div class="d-flex align-items-center">#}
+{#                    <a href="#!" class="link-muted me-2"><i class="fas fa-thumbs-up me-1"></i>158</a>#}
+{#                    <a href="#!" class="link-muted"><i class="fas fa-thumbs-down me-1"></i>13</a>#}
+{#                  </div>#}
+{#                  <a href="#!" class="link-muted"><i class="fas fa-reply me-1"></i> Reply</a>#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#  </div>#}
+{#</section>#}
+
                 <div class="col-md-10 col-lg-8 m-auto">
                     <h6 class="title mb-2">Comment below</h6>
                     <p class="mb-5">Feel Free To Say Your Opinion <b>:)</b></p>
@@ -45,7 +101,8 @@
                         {% for field in form %}
                             {{ field.label_tag }}<br>
                             {{ field }}
-                        {% endfor %}
+                        {% endfor %}<br>
+                    <button type="submit" class="btn btn-warning">Comment</button>
                     </form>
                 </div>
             </div>
@@ -58,7 +115,7 @@
             </a>
         {% else %}
             <a href="{% url 'login' %}">
-                <button type="button" class="btn btn-primary">If you want to edit this movie<br>Click Here
+                <button type="button" class="btn btn-warning">If you want to edit this movie<br>Click Here
                 </button>
             </a>
         {% endif %}

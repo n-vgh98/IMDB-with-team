@@ -11,13 +11,26 @@ def movies_list(request):
 
 
 def movie_detail(request, pk):
+    movie = get_object_or_404(Movie, pk=pk)
+    movie_comments = movie.movie_comments.all()
+
     if request.method == 'POST':
-        pass
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.movie = movie
+            comment.save()
+            form = CommentForm()
+    else:
+        form = CommentForm()
 
-    form = CommentForm()
+    return render(request, 'movies/detail_movie.html', {
+        'movie': movie,
+        'form': form,
+        'movie_comments': movie_comments,
+    })
 
-    movie = Movie.objects.get(pk=pk)
-    return render(request, 'movies/detail_movie.html', {'movie': movie, 'form': form})
 
 
 def add_movie(request):
