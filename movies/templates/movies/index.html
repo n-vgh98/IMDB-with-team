@@ -67,7 +67,7 @@
 
                         <div id="myModal{{ movie.id }}" class="modal fade bd-example-modal-sm" role="dialog"
                              aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-sm">
+                            <div class="modal-dialog modal-md">
                                 <div class="modal-content" style="background-color: black;">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Rate for {{ movie.title }}</h5>
@@ -80,9 +80,14 @@
                                         <form action="{% url 'rate_movie' movie.id %}" method="post">
                                             {% csrf_token %}
                                            <div class="rating rating2">
-                                            <a href="#5" title="Give 5 stars"><input type="submit" name="rate" value="5">★</a>
-                                            <a href="#4" title="Give 4 stars"><input type="submit" name="rate" value="4">★</a>
-                                            <a href="#3" title="Give 3 stars"><input type="submit" name="rate" value="3">★</a>
+                                            <a href="#10" title="Give 10 stars"><input type="submit" name="rate" value=10>★</a>
+                                            <a href="#9" title="Give 9 stars"><input type="submit" name="rate" value=9>★</a>
+                                            <a href="#8" title="Give 8 stars"><input type="submit" name="rate" value=8>★</a>
+                                            <a href="#7" title="Give 7 stars"><input type="submit" name="rate" value=7>★</a>
+                                            <a href="#6" title="Give 6 stars"><input type="submit" name="rate" value=6>★</a>
+                                            <a href="#5" title="Give 5 stars"><input type="submit" name="rate" value=5>★</a>
+                                            <a href="#4" title="Give 4 stars"><input type="submit" name="rate" value=4>★</a>
+                                            <a href="#3" title="Give 3 stars"><input type="submit" name="rate" value=3>★</a>
                                             <a href="#2" title="Give 2 stars"><input type="submit" name="rate" value=2>★</a>
                                             <a href="#1" title="Give 1 star"><input type="submit" name="rate" value=1>★</a>
                                             </div>

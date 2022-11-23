@@ -11864,7 +11864,7 @@ body {
 		 * Rating styles
 		 */
 		.rating {
-			width: 226px;
+			width: auto;
 			margin: 0 auto 1em;
 			font-size: 40px;
 			overflow:hidden;
