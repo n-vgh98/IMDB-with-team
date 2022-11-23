@@ -11900,3 +11900,8 @@ body {
 		.rating2 a {
 			float:none
 		}
+
+
+.my_rate:hover{
+  color:#ffc107;
+}
