@@ -5,12 +5,12 @@
     <header class="header" style="background-image: url('{{ movie.avatar.url }}'); height: 50%;">
         <div class="overlay"></div>
         <div class="header-content">
-            <h1 class="header-title">hi</h1>
+{#            <h1 class="header-title">hi</h1>#}
             {#            <p class="header-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod#}
             {#            tempor incididunt.</p>#}
-
-            <button class="btn btn-theme-color modal-toggle"><i class="ti-control-play text-danger"></i> Watch Video
-            </button>
+{##}
+{#            <button class="btn btn-theme-color modal-toggle"><i class="ti-control-play text-danger"></i> Watch Video#}
+{#            </button>#}
 
         </div>
     </header><!-- end of page header -->
@@ -33,7 +33,7 @@
             </p>
         </div>
 
-        <div class="contact-section">
+        <div>
             <div class="overlay"></div>
             <!-- container -->
             <div class="container">
@@ -42,9 +42,9 @@
 {#           comments        #}
                 {% for comment in movie_comments %}
                 <div class="row d-flex justify-content-center">
-                    <img class="rounded-circle shadow-1-strong me-3"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp" alt="avatar" width="65"
-                        height="65" />
+{#                    <img class="rounded-circle shadow-1-strong me-3"#}
+{#                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp" alt="avatar" width="65"#}
+{#                        height="65" />#}
                   <div class="col-md-11 col-lg-9 col-xl-7">
                     <div class="d-flex flex-start mb-4">
                       <div class="card w-100" >
@@ -101,7 +101,7 @@
                             {{ field }}
 
                         {% endfor %}<br>
-                    <button type="submit" class="btn btn-warning">Submit</button>
+                    <button type="submit" class="btn btn-warning"><b>Submit</b></button>
                     <br><br>
 
                     </form>
@@ -111,7 +111,7 @@
 
         {% if user.is_authenticated %}
             <a href="{% url 'edit_movie' movie.id %}">
-                <button type="button" class="btn btn-warning"><b>If you want to edit this movie</b><br><b>Click
+                <button type="button" class="btn btn-warning">If you want to edit this movie<br><b>Click
                     Here</b></button>
             </a>
         {% else %}
