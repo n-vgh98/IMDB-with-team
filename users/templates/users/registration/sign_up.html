@@ -6,6 +6,11 @@
     <div class="ontainer page-container">
     <div class="row">
         <div class="col-md-4 offset-4" style="padding-top:13%;">
+                {% if messages %}
+                    {% for message in messages %}
+                        <h4 style="color: white">{{ message }}</h4>
+                    {% endfor %}
+                {% endif %}
              <form action="" method="POST" class="form-group">
             {% csrf_token %}
             {{ form| crispy }}
