@@ -33,13 +33,10 @@ def movie_detail(request, pk):
     })
 
 
-
-
 # @login_required(login_url='/users/signup/')
 # def movie_comment_save(request, pk):
 #     form = MovieComment(request.POST)
 #     MovieComment.objects.create(comment_body=form, movie_id=pk)
-
 
 
 def add_movie(request):
@@ -88,4 +85,16 @@ def delete_movie(request, pk):
     movie.is_valid = False
     movie.save()
 
+    return redirect('movies_list')
+
+
+@login_required(login_url='/users/login/')
+def rate_movie(request, pk):
+    movie = get_object_or_404(Movie, pk=pk)
+    rating = MovieRate.objects.create(
+        movie=movie,
+        rate=int(request.POST.get('rate')),
+        user=request.user,
+    )
+    rating.save()
     return redirect('movies_list')

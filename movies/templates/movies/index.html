@@ -37,20 +37,65 @@
         <div class="row mb-4">
             {% for movie in movies %}
             <div class="col-md-4">
-                <a href="{% url 'movie_detail' movie.id %}" class="overlay-img">
-                    {% if movie.avatar %}
-                    <img src="{{ movie.avatar.url }}" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">
-                    {% else %}
-                    <img src="#" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">
-                    {% endif %}
-                    <div class="overlay"></div>
-                    <div class="des">
-                        <h1 class="title">{{ movie.title }}</h1>
-{#                        <h6 class="subtitle">magna aliqua</p>#}
-                        <p></p>
+                <div class="card h-90 text-white bg-dark">
+                    <a href="{% url 'movie_detail' movie.id %}" class="overlay-img">
+                        {% if movie.avatar %}
+                        <img src="{{ movie.avatar.url }}" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">
+                        {% else %}
+                        <img src="#" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">
+                        {% endif %}
+                        <div class="overlay"></div>
+                        <div class="des">
+                            <h1 class="title">{{ movie.title }}</h1>
+    {#                        <h6 class="subtitle">magna aliqua</p>#}
+                            <p></p>
+                        </div>
+                    </a>
+                    <div class="row m-2">
+                        <div class="col-6 text-left">
+                            <i class="fa fa-star rating-color text-warning text-left" style="font-size: 150%;"> </i>  <span class="ml-3" style="font-size: 180%;">{{ movie.rate | floatformat:2 }}</span>
+                        </div>
+                         <div class="col-6 text-right">
+                             <a href="#myModal{{ movie.id }}" class="p-3" data-bs-toggle="modal"><i class="fa fa-star rating-color text-left" style="font-size: 150%;"></i></a>
+                        </div>
                     </div>
-                </a>
+                </div>
             </div>
+
+                 <!-- modal-->
+
+
+                        <div id="myModal{{ movie.id }}" class="modal fade bd-example-modal-sm" role="dialog"
+                             aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content" style="background-color: black;">
+                                    <div class="modal-header">
+                                        <!--                                        <h5 class="modal-title">Confirmation</h5>-->
+                                        <button type="button" class="btn-close btn-primary"
+                                                data-bs-dismiss="modal"></button>
+                                    </div>
+
+
+                                    <div class="modal-body">
+                                        <form action="{% url 'rate_movie' movie.id %}" method="post">
+                                            {% csrf_token %}
+                                           <div class="rating rating2">
+                                            <a href="#5" title="Give 5 stars"><input type="submit" name="rate" value="5">★</a>
+                                            <a href="#4" title="Give 4 stars"><input type="submit" name="rate" value="4">★</a>
+                                            <a href="#3" title="Give 3 stars"><input type="submit" name="rate" value="3">★</a>
+                                            <a href="#2" title="Give 2 stars"><input type="submit" name="rate" value=2>★</a>
+                                            <a href="#1" title="Give 1 star"><input type="submit" name="rate" value=1>★</a>
+                                            </div>
+                                        </form>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
             {% endfor %}
 
 

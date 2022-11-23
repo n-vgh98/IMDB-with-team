@@ -1,6 +1,7 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.conf import settings
+from django.db.models import Avg
 
 
 class Genre(models.Model):
@@ -59,6 +60,11 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def rate(self):
+        avg_rate = self.movie_rate.all().aggregate(avg=Avg('rate'))
+        return avg_rate.get('avg') or 1
 
 
 class MovieCrew(models.Model):
