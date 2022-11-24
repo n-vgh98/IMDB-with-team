@@ -92,7 +92,7 @@ def delete_movie(request, pk):
 
 def rate_movie(request, pk):
     movie = get_object_or_404(Movie, pk=pk, is_valid=True)
-    rating = MovieRate.objects.update_or_create(
+    MovieRate.objects.update_or_create(
         movie=movie,
         user=request.user,
         defaults={'rate': int(request.POST.get('rate'))})
