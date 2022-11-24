@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from .models import User
 
 
-def login(request, *args):
+def login_user(request):
     if request.user.is_anonymous:
         if request.method == "GET":
             form = UserLoginForm()
@@ -25,7 +25,7 @@ def login(request, *args):
                 return render(request, 'users/registration/login.html', context={'form': form})
 
 @login_required
-def logout(request):
+def logout_user(request):
     logout(request)
     return redirect('movies_list')
 
