@@ -13,7 +13,7 @@ def movies_list(request):
 
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
-    movie_comments = movie.movie_comments.all()
+    movie_comments = movie.movie_comments.all().filter(status='30')
     form = CommentForm(request.POST)
     if request.method == 'POST':
         if request.user.is_authenticated:
