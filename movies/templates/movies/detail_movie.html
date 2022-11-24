@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Movies Detail{% endblock %}
 {% block content %}
+{% load crispy_forms_tags %}
     <!-- page header -->
     <header class="header" style="background-image: url('{{ movie.avatar.url }}'); height: 50%;">
         <div class="overlay"></div>
@@ -97,10 +98,8 @@
                     <p class="mb-5">Feel Free To Say Your Opinion <b>:)</b></p>
                     <form action="{% url 'movie_detail' movie.id%}" method="post" class="form-group">
                         {% csrf_token %}
-                        {% for field in form %}
-                            {{ field }}
-
-                        {% endfor %}<br>
+                            {{ form | crispy }}
+                        <br>
                     <button type="submit" class="btn btn-warning"><b>Submit</b></button>
                     <br><br>
 
@@ -108,18 +107,10 @@
                 </div>
             </div>
         </div>
-
-        {% if user.is_authenticated %}
             <a href="{% url 'edit_movie' movie.id %}">
                 <button type="button" class="btn btn-warning">If you want to edit this movie<br><b>Click
                     Here</b></button>
             </a>
-        {% else %}
-            <a href="{% url 'login' %}">
-                <button type="button" class="btn btn-warning">If you want to edit this movie<br>Click Here
-                </button>
-            </a>
-        {% endif %}
 
     </div> <!-- end of page container -->
 

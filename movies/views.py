@@ -14,15 +14,19 @@ def movies_list(request):
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
     movie_comments = movie.movie_comments.all()
-
+    form = CommentForm(request.POST)
     if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.user = request.user
-            comment.movie = movie
-            comment.save()
-            form = CommentForm()
+        if request.user.is_authenticated:
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.user = request.user
+                comment.movie = movie
+                comment.save()
+                form = CommentForm()
+            else:
+                form = CommentForm()
+        else:
+            return redirect('login')
     else:
         form = CommentForm()
 
@@ -33,12 +37,8 @@ def movie_detail(request, pk):
     })
 
 
-# @login_required(login_url='/users/signup/')
-# def movie_comment_save(request, pk):
-#     form = MovieComment(request.POST)
-#     MovieComment.objects.create(comment_body=form, movie_id=pk)
 
-
+@login_required
 def add_movie(request):
     if request.method == 'GET':
         form = MovieForm()
@@ -52,7 +52,7 @@ def add_movie(request):
             form = MovieForm()
             return render(request, 'movies/add_movie_form.html', {'form': form})
 
-
+@login_required
 def edit_movie(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
     if request.method == 'GET':
@@ -79,7 +79,7 @@ def edit_movie(request, pk):
             }
             return render(request, 'movies/edit_movie_form.html', context=context)
 
-
+@login_required
 def delete_movie(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
     movie.is_valid = False
@@ -88,7 +88,7 @@ def delete_movie(request, pk):
     return redirect('movies_list')
 
 
-@login_required(login_url='/users/login/')
+@login_required
 def rate_movie(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
     rating = MovieRate.objects.create(

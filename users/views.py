@@ -1,17 +1,17 @@
-from django.urls import reverse_lazy
-from django.views.generic import CreateView
 from .forms import CustomUserCreationForm
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from .forms import UserLoginForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from .models import User
+from django.http import HttpResponseRedirect
+from django.core.cache import *
 
 
 def login_user(request):
     if request.user.is_anonymous:
         if request.method == "GET":
+            cache.set('next', request.GET.get('next', None))
             form = UserLoginForm()
             return render(request, 'users/registration/login.html', context={'form': form})
         elif request.method == "POST":
@@ -19,15 +19,22 @@ def login_user(request):
                                 password=request.POST.get('password'))
             if user is not None:
                 login(request, user)
+                next_url = cache.get('next')
+                if next_url:
+                    cache.delete('next')
+                    return HttpResponseRedirect(next_url)
+
                 return redirect('movies_list')
             else:
                 form = UserLoginForm()
                 return render(request, 'users/registration/login.html', context={'form': form})
 
+
 @login_required
 def logout_user(request):
     logout(request)
     return redirect('movies_list')
+
 
 def signup(request):
     if request.user.is_anonymous:
