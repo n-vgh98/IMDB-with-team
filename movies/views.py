@@ -37,7 +37,6 @@ def movie_detail(request, pk):
     })
 
 
-
 @login_required
 def add_movie(request):
     if request.method == 'GET':
@@ -51,6 +50,7 @@ def add_movie(request):
         else:
             form = MovieForm()
             return render(request, 'movies/add_movie_form.html', {'form': form})
+
 
 @login_required
 def edit_movie(request, pk):
@@ -79,6 +79,7 @@ def edit_movie(request, pk):
             }
             return render(request, 'movies/edit_movie_form.html', context=context)
 
+
 @login_required
 def delete_movie(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
@@ -88,13 +89,11 @@ def delete_movie(request, pk):
     return redirect('movies_list')
 
 
-@login_required
+
 def rate_movie(request, pk):
-    movie = get_object_or_404(Movie, pk=pk)
-    rating = MovieRate.objects.create(
+    movie = get_object_or_404(Movie, pk=pk, is_valid=True)
+    rating = MovieRate.objects.update_or_create(
         movie=movie,
-        rate=int(request.POST.get('rate')),
         user=request.user,
-    )
-    rating.save()
+        defaults={'rate': int(request.POST.get('rate'))})
     return redirect('movies_list')

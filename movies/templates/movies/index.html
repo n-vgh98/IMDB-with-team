@@ -55,9 +55,11 @@
                         <div class="col-6 text-left">
                             <i class="fa fa-star rating-color text-warning text-left" style="font-size: 150%;"> </i>  <span class="ml-3" style="font-size: 180%;">{{ movie.rate | floatformat:2 }}</span>
                         </div>
+                        {% if user.is_authenticated %}
                          <div class="col-6 text-right">
                              <a href="#myModal{{ movie.id }}" class="my_rate p-3" data-bs-toggle="modal"><i class="fa fa-star rating-color text-left" style="font-size: 150%;"></i></a>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
