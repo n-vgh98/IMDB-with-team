@@ -70,31 +70,37 @@
         <div>
             <div class="overlay"></div>
             <!-- container -->
-            <div class="container">
+            <div class="col-md-10 col-lg-8 m-auto pt-5">
 
 
 {#           comments        #}
-                {% for comment in movie_comments %}
-                <div class="row d-flex justify-content-center">
+            <h3 class="text-left pb-2">Comments:</h3>
+
+
+                <div class="row d-flex justify-content-center" style="border:1px solid white;">
 {#                    <img class="rounded-circle shadow-1-strong me-3"#}
 {#                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp" alt="avatar" width="65"#}
 {#                        height="65" />#}
                   <div class="col-md-11 col-lg-9 col-xl-7">
                     <div class="d-flex flex-start mb-4">
                       <div class="card w-100" >
-                        <div class="card-body p-4">
+                        <div class="card-body">
+                             {% for comment in movie_comments %}
                           <div class="text-dark">
-                            <h5 class="text-left">{{ comment.user.full_name }}</h5>
-                            <p>
+
+                            <h5 class="text-left" style="margin-left: -40%;">{{ comment.user.full_name }}:</h5>
+                            <p class="text-left" style="margin-left: -40%;">
                               {{ comment.comment_body | linebreaks }}
-                            </p>
+                            </p>    <br>
+                                  <hr>
                           </div>
+                            {% endfor %}
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-            {% endfor %}
+
 
 
 <!--{#        <div class="d-flex flex-start">#}-->
@@ -126,9 +132,9 @@
 <!--{#  </div>#}-->
 <!--{#</section>#}-->
 
-                <div class="col-md-10 col-lg-8 m-auto">
-                    <h6 class="title mb-2">Comment below</h6>
-                    <p class="mb-5">Feel Free To Say Your Opinion <b>:)</b></p>
+                <div class="col-md-10 col-lg-8 m-auto pt-5 text-center">
+                    <h6 class="title mt-5">Comment below</h6>
+                    <p class="mb-2">Feel Free To Say Your Opinion<b>:)</b></p>
                     <form action="{% url 'movie_detail' movie.id%}" method="post" class="form-group">
                         {% csrf_token %}
                             {{ form | crispy }}

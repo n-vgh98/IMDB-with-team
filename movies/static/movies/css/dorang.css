@@ -11852,7 +11852,7 @@ body {
 		p a:focus {
 			text-decoration: underline;
 		}
-		p + p { color: #bbb; margin-top: 2em;}
+		p + p { color: #bbb; margin-left: -125%;}
 		.detail {position: absolute; text-align: right; right: 5px; bottom: 5px; width: 50%;}
 
 		a[href*="intent"] {
