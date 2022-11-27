@@ -31,13 +31,14 @@
         <li class="nav-item"><a href="{% url 'signup' %}" class="nav-link">Sign Up</a></li>
         <li class="nav-item"><a href="{% url 'movies_list' %}" class="nav-link"><img style="width: 70%"
                                                                src="{% static "movies/imgs/logo.png" %}"></a></li>
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" text-align="center">Language
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">English</a></li>
-                <li><a class="dropdown-item" href="#">Français</a></li>
-                <li><a class="dropdown-item" href="#">Deutsch</a></li>
-            </ul>
-        </a>
+        <li class="nav-item"><a href="#footer" class="nav-link">Contact Us</a></li>
+{#        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" text-align="center">Language#}
+{#            <ul class="dropdown-menu">#}
+{#                <li><a class="dropdown-item" href="#">English</a></li>#}
+{#                <li><a class="dropdown-item" href="#">Français</a></li>#}
+{#                <li><a class="dropdown-item" href="#">Deutsch</a></li>#}
+{#            </ul>#}
+{#        </a>#}
 
         <li class="nav-item search">
             <a href="javascript:void(0)" class="nav-link search-toggle"><i class="ti-search"></i> Search</a>
@@ -68,7 +69,7 @@
         {#            </div>#}
 
         <!-- footer -->
-        <footer class="footer">
+        <footer class="footer" id="footer">
             <p class="infos">&copy;
                 <script>document.write(new Date().getFullYear())</script>
                 , Made with <i class="ti-heart text-danger"></i> by <a href="https://github.com/n-vgh98/IMDB-with-team"><b>NYRVa</b></a></p>
