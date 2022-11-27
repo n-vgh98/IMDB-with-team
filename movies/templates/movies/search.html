@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<!-- page header -->
+    <header class="header" style="background-image: url({% static 'movies/imgs/HeaderImg1.png'%});">
+        <div class="overlay"></div>
+        <div class="header-content">
+            <h1 class="header-title"><b>IMDb</b></h1>
+            <p class="header-subtitle">IMDb is the world`s most popular and authoritative source for movie,TV and celebrity content.<br>
+                find rating and reviews for the newest movie and TV shows.</p>
+
+{#            <button class="btn btn-theme-color modal-toggle"><i class="ti-control-play text-danger"></i> Watch Video</button>#}
+
+        </div>
+    </header><!-- end of page header -->
+
+    <!-- modal -->
+    <div class="modalBox">
+        <div class="modalBox-body">
+            <iframe width="100%" height="450px" class="border-0"
+            src="https://www.youtube.com/embed/tgbNyZ7vqY?controls=0">
+            </iframe>
+        </div>
+    </div><!-- end of modal -->
+
+    <!-- page container -->
+    <div class="container page-container">
+{#        <div class="col-md-10 col-lg-8 m-auto">#}
+{#            <h6 class="title mb-4">IMDb</h6>#}
+{#            <p class="mb-5">IMDb is the world`s most popular and authoritative source for movie,TV and celebrity content.<br>#}
+{#                find rating and reviews for the newest movie and TV shows.#}
+{#            </p>#}
+{#        </div>#}
+
+        <!-- row -->
+        <div class="row mb-4">
+            {% for movie in movies %}
+            <div class="col-md-4">
+                <div class="card h-90 text-white bg-dark">
+                    <a href="{% url 'movie_detail' movie.id %}" class="overlay-img">
+                        {% if movie.avatar %}
+                        <img src="{{ movie.avatar.url }}" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">
+                        {% else %}
+                        <img src="#" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">
+                        {% endif %}
+                        <div class="overlay"></div>
+                        <div class="des">
+                            <h1 class="title">{{ movie.title }}</h1>
+    {#                        <h6 class="subtitle">magna aliqua</p>#}
+                            <p></p>
+                        </div>
+                    </a>
+                    <div class="row m-2">
+                        <div class="col-6 text-left">
+                            <i class="fa fa-star rating-color text-warning text-left" style="font-size: 150%;"> </i>  <span class="ml-3" style="font-size: 180%;">{{ movie.rate | floatformat:2 }}</span>
+                        </div>
+                        {% if user.is_authenticated %}
+                         <div class="col-6 text-right">
+                             <a href="#myModal{{ movie.id }}" class="my_rate p-3" data-bs-toggle="modal"><i class="fa fa-star rating-color text-left" style="font-size: 150%;"></i></a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+                 <!-- modal-->
+
+
+                        <div id="myModal{{ movie.id }}" class="modal fade bd-example-modal-sm" role="dialog"
+                             aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content" style="background-color: black;">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Rate for {{ movie.title }}</h5>
+                                        <button type="button" class="btn-close btn-primary"
+                                                data-bs-dismiss="modal"></button>
+                                    </div>
+
+
+                                    <div class="modal-body">
+                                        <form action="{% url 'rate_movie' movie.id %}" method="post">
+                                            {% csrf_token %}
+                                           <div class="rating rating2">
+                                            <a href="#10" title="Give 10 stars"><input type="submit" name="rate" value=10>★</a>
+                                            <a href="#9" title="Give 9 stars"><input type="submit" name="rate" value=9>★</a>
+                                            <a href="#8" title="Give 8 stars"><input type="submit" name="rate" value=8>★</a>
+                                            <a href="#7" title="Give 7 stars"><input type="submit" name="rate" value=7>★</a>
+                                            <a href="#6" title="Give 6 stars"><input type="submit" name="rate" value=6>★</a>
+                                            <a href="#5" title="Give 5 stars"><input type="submit" name="rate" value=5>★</a>
+                                            <a href="#4" title="Give 4 stars"><input type="submit" name="rate" value=4>★</a>
+                                            <a href="#3" title="Give 3 stars"><input type="submit" name="rate" value=3>★</a>
+                                            <a href="#2" title="Give 2 stars"><input type="submit" name="rate" value=2>★</a>
+                                            <a href="#1" title="Give 1 star"><input type="submit" name="rate" value=1>★</a>
+                                            </div>
+                                        </form>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+            {% endfor %}
+
+
+        </div><!-- end of row -->
+        <a href="{% url 'add_movie' %}"><button type="button" class="btn btn-warning">If you want to add another movie<br><b>Click Here</b></button></a>
+    </div> <!-- end of page container -->
+{% endblock %}

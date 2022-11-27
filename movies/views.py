@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from .forms import MovieForm, CommentForm
 from .models import *
+from django.views.generic import ListView
+from django.db.models import Q
 
 
 def movies_list(request):
@@ -105,7 +107,6 @@ def delete_movie(request, pk):
     return redirect('movies_list')
 
 
-
 def rate_movie(request, pk):
     movie = get_object_or_404(Movie, pk=pk, is_valid=True)
     MovieRate.objects.update_or_create(
@@ -113,3 +114,28 @@ def rate_movie(request, pk):
         user=request.user,
         defaults={'rate': int(request.POST.get('rate'))})
     return redirect('movies_list')
+
+
+# class SearchResultsView(ListView):
+#     model = Movie
+#     template_name = 'movies/search.html'
+#     queryset = Movie.objects.filter(Q(title__icontains='test1'))
+
+# def get_queryset(self):
+#     query = self.request.GET.get("q")
+#     movies = Movie.objects.filter(Q(title__icontains=query))
+#     return movies
+
+def search(request):
+    movies = []
+
+    if request.method == "GET":
+
+        query = request.GET.get('q')
+
+        if query == '':
+            query = 'None'
+
+        movies = Movie.objects.filter(Q(title__icontains=query))
+
+    return render(request, 'movies/search.html', {'query': query, 'movies': movies})
