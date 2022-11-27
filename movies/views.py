@@ -13,6 +13,18 @@ def movies_list(request):
 
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
+    genres = movie.genres.all()
+    movie_crew = MovieCrew.objects.filter(movie=movie).select_related('crew', 'role')
+    directors = []
+    writers = []
+    actors = []
+    for crew in movie_crew:
+        if crew.role.title == 'director':
+            directors.append(crew.crew.full_name)
+        elif crew.role.title == 'Writer':
+            writers.append(crew.crew.full_name)
+        elif crew.role.title == 'actor':
+            actors.append(crew.crew.full_name)
     movie_comments = movie.movie_comments.all().filter(status='30')
     form = CommentForm(request.POST)
     if request.method == 'POST':
@@ -34,6 +46,10 @@ def movie_detail(request, pk):
         'movie': movie,
         'form': form,
         'movie_comments': movie_comments,
+        'directors': directors,
+        'writers': writers,
+        'actors': actors,
+        'genres': genres,
     })
 
 
